@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi novia?</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="titulo">
+            <h1>¿Quieres hacerme una pulsera? 💖</h1>
+        </div>
+        <div class="opciones">
+            <button id="si" class="btn">😍 Sí</button>
+            <button id="no" class="btn">❌ No</button>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Cuando el usuario intenta presionar el botón "No"
+            $("#no").on("mouseover touchstart", function (event) {
+                event.preventDefault(); // Evita reacción involuntaria en móviles
+                let ancho = $(window).width() - $(this).outerWidth();
+                let alto = $(window).height() - $(this).outerHeight();
+                let nuevaX = Math.random() * ancho;
+                let nuevaY = Math.random() * alto;
+
+                $(this).css({
+                    position: "absolute",
+                    left: nuevaX + "px",
+                    top: nuevaY + "px"
+                });
+            });
+
+            // Si presiona "Sí", muestra un mensaje y activa la animación de corazones
+            $("#si").on("click", function () {
+                alert("¡Sabía que dirías que sí! ❤️");
+                generarCorazones();
+            });
+
+            // Función para hacer llover corazones
+            function generarCorazones() {
+                for (let i = 0; i < 20; i++) {
+                    let corazon = $("<div class='corazon'>❤️</div>");
+                    $("body").append(corazon);
+
+                    let startX = Math.random() * $(window).width();
+                    let duration = Math.random() * 3 + 2;
+
+                    corazon.css({
+                        left: startX + "px",
+                        animationDuration: duration + "s"
+                    });
+
+                    setTimeout(() => corazon.remove(), duration * 1000);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
