@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #ffe6e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+}
+
+.contenedor {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 350px;
+}
+
+.titulo {
+    margin-bottom: 15px;
+    font-size: 20px; /* Ajustado para no ser demasiado grande */
+}
+
+/* Botones responsivos */
+.opciones {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    padding: 15px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    min-width: 120px; /* Asegura que los botones sean más grandes en móviles */
+    max-width: 180px;
+}
+
+/* Botón "Sí" */
+#si {
+    background: #ff4d4d;
+    color: white;
+}
+
+#si:hover {
+    background: #e60000;
+}
+
+/* Botón "No" */
+#no {
+    background: #333;
+    color: white;
+    position: relative;
+}
+
+#no:hover {
+    background: #555;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 600px) {
+    .contenedor {
+        padding: 15px;
+    }
+    .titulo {
+        font-size: 18px;
+    }
+    .btn {
+        font-size: 20px;
+        padding: 12px 25px;
+        min-width: 140px; /* Aumentado para mejor visibilidad */
+        max-width: 180px;
+    }
+}
+
+/* Animación de corazones */
+.corazon {
+    position: absolute;
+    font-size: 25px;
+    color: red;
+    opacity: 0.8;
+    animation: caer 3s linear forwards;
+}
+
+@keyframes caer {
+    0% {
+        transform: translateY(-50px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
