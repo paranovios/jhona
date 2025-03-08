@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>¿Quieres ser mi novia?</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+
+    <script>
+        $(document).ready(function() {
+            // Movimiento del botón "No"
+            $(".no").hover(function() {
+                let anchoVentana = $(window).width() - $(this).width();
+                let altoVentana = $(window).height() - $(this).height();
+
+                let nuevaX = Math.random() * anchoVentana;
+                let nuevaY = Math.random() * altoVentana;
+
+                $(this).css({
+                    "position": "absolute",
+                    "left": nuevaX + "px",
+                    "top": nuevaY + "px"
+                });
+            });
+
+            // Función para mostrar el mensaje y hacer llover corazones
+            function mostrarMensaje() {
+                document.getElementById("mensaje-si").style.display = "block";
+                lloverCorazones();
+            }
+            window.mostrarMensaje = mostrarMensaje;
+
+            // Función para generar corazones animados
+            function lloverCorazones() {
+                setInterval(function() {
+                    let corazon = $("<div class='corazon'>💖</div>");
+                    let posX = Math.random() * $(window).width();
+                    
+                    corazon.css({
+                        "left": posX + "px",
+                        "top": "-50px"
+                    });
+
+                    $("body").append(corazon);
+
+                    corazon.animate({
+                        top: $(window).height() + "px",
+                        opacity: 0
+                    }, 3000, function() {
+                        $(this).remove();
+                    });
+                }, 300);
+            }
+        });
+    </script>
+
+    <div class="contenedor">
+        <div class="titulo">
+            <h1>¿Quieres ser mi novia? 😍</h1>
+        </div>
+        <div class="opciones">
+            <button class="boton si" onclick="mostrarMensaje()">💖 ¡Sí! 💖</button>
+            <button class="boton no">❌ No ❌</button>
+        </div>
+        <h2 id="mensaje-si" style="display: none;">Sabía que dirías que sí, mi amor 💕</h2>
+    </div>
+
+</body>
+</html>
+
+
+
